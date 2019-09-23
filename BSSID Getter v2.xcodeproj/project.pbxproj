@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F3BFE152335D5340077AA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE142335D5340077AA79 /* AppDelegate.swift */; };
+		2F3BFE172335D5340077AA79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE162335D5340077AA79 /* ViewController.swift */; };
+		2F3BFE1A2335D5340077AA79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3BFE182335D5340077AA79 /* Main.storyboard */; };
+		2F3BFE1C2335D5360077AA79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3BFE1B2335D5360077AA79 /* Assets.xcassets */; };
+		2F3BFE1F2335D5360077AA79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3BFE1D2335D5360077AA79 /* LaunchScreen.storyboard */; };
+		2F3BFE28233688970077AA79 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE27233688970077AA79 /* Intents.intentdefinition */; };
+		2F3BFE3023368A600077AA79 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE2F23368A600077AA79 /* IntentHandler.swift */; };
+		2F3BFE3423368A600077AA79 /* BSSIDIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2F3BFE2D23368A600077AA79 /* BSSIDIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2F3BFE3A23368AB60077AA79 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE27233688970077AA79 /* Intents.intentdefinition */; };
+		2F3BFE3C23368B640077AA79 /* BSSIDIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE3B23368B640077AA79 /* BSSIDIntentHandler.swift */; };
+		2FE580AB2336D94E005307CC /* AccessPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE580AA2336D94E005307CC /* AccessPoint.swift */; };
+		2FE580AD2336D9DE005307CC /* AccessPointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE580AC2336D9DE005307CC /* AccessPointsTableViewController.swift */; };
+		2FE580AF2336D9FE005307CC /* AccessPointDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE580AE2336D9FE005307CC /* AccessPointDetailTableViewController.swift */; };
+		2FE580B12336DA7B005307CC /* AccessPointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE580B02336DA7B005307CC /* AccessPointTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2F3BFE3223368A600077AA79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F3BFE092335D5340077AA79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F3BFE2C23368A600077AA79;
+			remoteInfo = BSSIDIntents;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2F3BFE3823368A600077AA79 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2F3BFE3423368A600077AA79 /* BSSIDIntents.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2F3BFE112335D5340077AA79 /* BSSID Getter v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BSSID Getter v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3BFE142335D5340077AA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2F3BFE162335D5340077AA79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2F3BFE192335D5340077AA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2F3BFE1B2335D5360077AA79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F3BFE1E2335D5360077AA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2F3BFE202335D5360077AA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F3BFE262335D5C40077AA79 /* BSSID Getter v2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BSSID Getter v2.entitlements"; sourceTree = "<group>"; };
+		2F3BFE27233688970077AA79 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		2F3BFE2D23368A600077AA79 /* BSSIDIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BSSIDIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3BFE2F23368A600077AA79 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		2F3BFE3123368A600077AA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F3BFE3923368A810077AA79 /* BSSIDIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BSSIDIntents.entitlements; sourceTree = "<group>"; };
+		2F3BFE3B23368B640077AA79 /* BSSIDIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSSIDIntentHandler.swift; sourceTree = "<group>"; };
+		2FE580AA2336D94E005307CC /* AccessPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPoint.swift; sourceTree = "<group>"; };
+		2FE580AC2336D9DE005307CC /* AccessPointsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPointsTableViewController.swift; sourceTree = "<group>"; };
+		2FE580AE2336D9FE005307CC /* AccessPointDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPointDetailTableViewController.swift; sourceTree = "<group>"; };
+		2FE580B02336DA7B005307CC /* AccessPointTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPointTableViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2F3BFE0E2335D5340077AA79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3BFE2A23368A600077AA79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F3BFE082335D5340077AA79 = {
+			isa = PBXGroup;
+			children = (
+				2F3BFE132335D5340077AA79 /* BSSID Getter v2 */,
+				2F3BFE2E23368A600077AA79 /* BSSIDIntents */,
+				2F3BFE122335D5340077AA79 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2F3BFE122335D5340077AA79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F3BFE112335D5340077AA79 /* BSSID Getter v2.app */,
+				2F3BFE2D23368A600077AA79 /* BSSIDIntents.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F3BFE132335D5340077AA79 /* BSSID Getter v2 */ = {
+			isa = PBXGroup;
+			children = (
+				2F3BFE262335D5C40077AA79 /* BSSID Getter v2.entitlements */,
+				2F3BFE142335D5340077AA79 /* AppDelegate.swift */,
+				2FE580A82336D8E3005307CC /* Main Screen */,
+				2F3BFE182335D5340077AA79 /* Main.storyboard */,
+				2F3BFE27233688970077AA79 /* Intents.intentdefinition */,
+				2FE580A92336D907005307CC /* Edit Access Points */,
+				2F3BFE1B2335D5360077AA79 /* Assets.xcassets */,
+				2F3BFE1D2335D5360077AA79 /* LaunchScreen.storyboard */,
+				2F3BFE202335D5360077AA79 /* Info.plist */,
+			);
+			path = "BSSID Getter v2";
+			sourceTree = "<group>";
+		};
+		2F3BFE2E23368A600077AA79 /* BSSIDIntents */ = {
+			isa = PBXGroup;
+			children = (
+				2F3BFE3923368A810077AA79 /* BSSIDIntents.entitlements */,
+				2F3BFE3B23368B640077AA79 /* BSSIDIntentHandler.swift */,
+				2F3BFE2F23368A600077AA79 /* IntentHandler.swift */,
+				2F3BFE3123368A600077AA79 /* Info.plist */,
+			);
+			path = BSSIDIntents;
+			sourceTree = "<group>";
+		};
+		2FE580A82336D8E3005307CC /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2F3BFE162335D5340077AA79 /* ViewController.swift */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		2FE580A92336D907005307CC /* Edit Access Points */ = {
+			isa = PBXGroup;
+			children = (
+				2FE580AA2336D94E005307CC /* AccessPoint.swift */,
+				2FE580B02336DA7B005307CC /* AccessPointTableViewCell.swift */,
+				2FE580AC2336D9DE005307CC /* AccessPointsTableViewController.swift */,
+				2FE580AE2336D9FE005307CC /* AccessPointDetailTableViewController.swift */,
+			);
+			path = "Edit Access Points";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F3BFE102335D5340077AA79 /* BSSID Getter v2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F3BFE232335D5360077AA79 /* Build configuration list for PBXNativeTarget "BSSID Getter v2" */;
+			buildPhases = (
+				2F3BFE0D2335D5340077AA79 /* Sources */,
+				2F3BFE0E2335D5340077AA79 /* Frameworks */,
+				2F3BFE0F2335D5340077AA79 /* Resources */,
+				2F3BFE3823368A600077AA79 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F3BFE3323368A600077AA79 /* PBXTargetDependency */,
+			);
+			name = "BSSID Getter v2";
+			productName = "BSSID Getter v2";
+			productReference = 2F3BFE112335D5340077AA79 /* BSSID Getter v2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2F3BFE2C23368A600077AA79 /* BSSIDIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F3BFE3523368A600077AA79 /* Build configuration list for PBXNativeTarget "BSSIDIntents" */;
+			buildPhases = (
+				2F3BFE2923368A600077AA79 /* Sources */,
+				2F3BFE2A23368A600077AA79 /* Frameworks */,
+				2F3BFE2B23368A600077AA79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BSSIDIntents;
+			productName = BSSIDIntents;
+			productReference = 2F3BFE2D23368A600077AA79 /* BSSIDIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2F3BFE092335D5340077AA79 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Tyler Knox";
+				TargetAttributes = {
+					2F3BFE102335D5340077AA79 = {
+						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
+					};
+					2F3BFE2C23368A600077AA79 = {
+						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 2F3BFE0C2335D5340077AA79 /* Build configuration list for PBXProject "BSSID Getter v2" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2F3BFE082335D5340077AA79;
+			productRefGroup = 2F3BFE122335D5340077AA79 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2F3BFE102335D5340077AA79 /* BSSID Getter v2 */,
+				2F3BFE2C23368A600077AA79 /* BSSIDIntents */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F3BFE0F2335D5340077AA79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3BFE1F2335D5360077AA79 /* LaunchScreen.storyboard in Resources */,
+				2F3BFE1C2335D5360077AA79 /* Assets.xcassets in Resources */,
+				2F3BFE1A2335D5340077AA79 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3BFE2B23368A600077AA79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F3BFE0D2335D5340077AA79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FE580AB2336D94E005307CC /* AccessPoint.swift in Sources */,
+				2FE580AD2336D9DE005307CC /* AccessPointsTableViewController.swift in Sources */,
+				2F3BFE28233688970077AA79 /* Intents.intentdefinition in Sources */,
+				2F3BFE172335D5340077AA79 /* ViewController.swift in Sources */,
+				2F3BFE152335D5340077AA79 /* AppDelegate.swift in Sources */,
+				2FE580AF2336D9FE005307CC /* AccessPointDetailTableViewController.swift in Sources */,
+				2FE580B12336DA7B005307CC /* AccessPointTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3BFE2923368A600077AA79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3BFE3C23368B640077AA79 /* BSSIDIntentHandler.swift in Sources */,
+				2F3BFE3A23368AB60077AA79 /* Intents.intentdefinition in Sources */,
+				2F3BFE3023368A600077AA79 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2F3BFE3323368A600077AA79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F3BFE2C23368A600077AA79 /* BSSIDIntents */;
+			targetProxy = 2F3BFE3223368A600077AA79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2F3BFE182335D5340077AA79 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F3BFE192335D5340077AA79 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2F3BFE1D2335D5360077AA79 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F3BFE1E2335D5360077AA79 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2F3BFE212335D5360077AA79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2F3BFE222335D5360077AA79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F3BFE242335D5360077AA79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "BSSID Getter v2/BSSID Getter v2.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = D97ZME3ET2;
+				INFOPLIST_FILE = "BSSID Getter v2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tyler58546.BSSID-Getter-v2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2F3BFE252335D5360077AA79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "BSSID Getter v2/BSSID Getter v2.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = D97ZME3ET2;
+				INFOPLIST_FILE = "BSSID Getter v2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tyler58546.BSSID-Getter-v2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2F3BFE3623368A600077AA79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BSSIDIntents/BSSIDIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D97ZME3ET2;
+				INFOPLIST_FILE = BSSIDIntents/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tyler58546.BSSID-Getter-v2.BSSIDIntents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2F3BFE3723368A600077AA79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BSSIDIntents/BSSIDIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D97ZME3ET2;
+				INFOPLIST_FILE = BSSIDIntents/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tyler58546.BSSID-Getter-v2.BSSIDIntents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F3BFE0C2335D5340077AA79 /* Build configuration list for PBXProject "BSSID Getter v2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3BFE212335D5360077AA79 /* Debug */,
+				2F3BFE222335D5360077AA79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F3BFE232335D5360077AA79 /* Build configuration list for PBXNativeTarget "BSSID Getter v2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3BFE242335D5360077AA79 /* Debug */,
+				2F3BFE252335D5360077AA79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F3BFE3523368A600077AA79 /* Build configuration list for PBXNativeTarget "BSSIDIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3BFE3623368A600077AA79 /* Debug */,
+				2F3BFE3723368A600077AA79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2F3BFE092335D5340077AA79 /* Project object */;
+}
