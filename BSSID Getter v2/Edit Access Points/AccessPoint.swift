@@ -8,7 +8,19 @@
 
 import Foundation
 
-class AccessPoint {
+class AccessPoint: NSObject, Codable, NSSecureCoding {
+    static var supportsSecureCoding: Bool = true
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(BSSID, forKey: "BSSID")
+    }
+    
+    required init?(coder: NSCoder) {
+        self.name = coder.decodeObject(forKey: "name") as! String
+        self.BSSID = coder.decodeObject(forKey: "BSSID") as! String
+    }
+    
     let name:String
     let BSSID:String
     
@@ -26,21 +38,34 @@ class AccessPoint {
         return accessPoints
     }
 }
-class AccessPointList {
-    var data:[Int:AccessPoint]
-    init (fromNumberedDict data:[Int:[String:String]]) {
+class AccessPointList: NSObject, Codable, NSSecureCoding {
+    static var supportsSecureCoding: Bool = true
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(data, forKey: "data")
+    }
+    
+    required init?(coder: NSCoder) {
+        self.data = (coder.decodeObject(forKey: "data") as? [AccessPoint]) ?? []
+    }
+    
+    let supportsSecureCoding = true
+    
+    var data:[AccessPoint]
+    /*init (fromNumberedDict data:[Int:[String:String]]) {
         var output:[Int:AccessPoint] = [:]
         for (id, accessPoint) in data {
             output[id] = AccessPoint(name: accessPoint.first!.value, BSSID: accessPoint.first!.key)
         }
         self.data = output
+    }*/
+    init (fromArray array:[AccessPoint]) {
+        data = array
     }
     init (fromDict dict:[String:String]) {
-        var n = 0
-        var output:[Int:AccessPoint] = [:]
+        var output:[AccessPoint] = []
         for (bssid, name) in dict {
-            output[n] = AccessPoint(name: name, BSSID: bssid)
-            n += 1
+            output.append(AccessPoint(name: name, BSSID: bssid))
         }
         data = output
     }
@@ -50,24 +75,10 @@ class AccessPointList {
     }
     
     func addItem(_ input:AccessPoint) {
-        let max = data.keys.max()!
-        data[max + 1] = input
+        data.append(input)
     }
     func removeItem(id:Int) {
-        data[id] = nil
-        var n = data.keys.max()!
-        if n >= data.keys.max()! {
-            return
-        }
-        
-        var newdata = data
-        newdata[n] = nil
-        while (n > id) {
-            newdata[n-1] = data[n]
-            n -= 1
-        }
-        newdata[id] = data[id+1]
-        data = newdata
+        data.remove(at: id)
     }
     
     func updateAccessPoint(id: Int, name: String, bssid:String) {
@@ -79,7 +90,7 @@ class AccessPointList {
     }
     
     func itemExists(withName name:String) -> Bool {
-        for (_, accessPoint) in data {
+        for accessPoint in data {
             if accessPoint.name == name {
                 return true
             }
@@ -88,42 +99,43 @@ class AccessPointList {
     }
     
     func save() {
-        var saveData:[Int:[String:String]] = [:]
-        for (id, accessPoint) in data {
-            saveData[id] = [accessPoint.BSSID:accessPoint.name]
-        }
+        print("saving: \(data)")
         do {
-            let archived = try NSKeyedArchiver.archivedData(withRootObject: saveData, requiringSecureCoding: true)
-            UserDefaults.standard.set(archived, forKey: "save")
+            let archived = try NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: false)
+            UserDefaults.standard.set(archived, forKey: "accessPoints")
         } catch {
-            print(error.localizedDescription)
+            print("Error saving: \(error.localizedDescription)")
         }
         
         
     }
     static func load() -> AccessPointList? {
-        if let loadData = UserDefaults.standard.value(forKey: "save") as? Data {
-            let unarchived = NSKeyedUnarchiver.unarchiveObject(with: loadData) as! [Int:[String:String]]
-            return AccessPointList(fromNumberedDict: unarchived)
+        if let loadData = UserDefaults.standard.value(forKey: "accessPoints") as? Data {
+            guard let unarchived = NSKeyedUnarchiver.unarchiveObject(with: loadData) as? AccessPointList else {
+                print("Failed to unarchive data")
+                return nil
+                
+            }
+            return unarchived
         }
         return nil
     }
     
     func getName(bssid: String) -> String? {
-        for (_, accessPoint) in data {
+        for accessPoint in data {
             if accessPoint.BSSID == bssid {
                 return accessPoint.name
-            } else {
-                print("")
             }
         }
         return nil
     }
     func getID(fromName name:String) -> Int? {
-        for (id, accessPoint) in data {
+        var n = 0
+        for accessPoint in data {
             if accessPoint.name == name {
-                return id
+                return n
             }
+            n += 1
         }
         return nil
     }
