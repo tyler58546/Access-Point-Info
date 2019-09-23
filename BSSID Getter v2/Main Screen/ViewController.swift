@@ -44,6 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var BSSIDLabel: UILabel!
+    @IBOutlet weak var addNameButton: UIButton!
     
    
     
@@ -61,6 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var names = AccessPointList.empty()
+    var currentBSSID = ""
     
     @objc func reloadUI() {
         print("Reloading UI...")
@@ -69,12 +71,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             for interface in interfaces {
                 if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
                     let bssid = interfaceInfo[kCNNetworkInfoKeyBSSID as String] as! String
+                    currentBSSID = bssid
+                    
                     if let name = names.getName(bssid: bssid) {
                         label.text = name
                         BSSIDLabel.text = bssid
+                        addNameButton.isHidden = true
                     } else {
                         label.text = bssid
                         BSSIDLabel.text = ""
+                        addNameButton.isHidden = false
                     }
                     infoLabel.text = "SSID: \(interfaceInfo[kCNNetworkInfoKeySSID as String] as! String)\nIP Address: \(getWiFiAddress() ?? "N/A")"
                     return
@@ -84,7 +90,44 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         label.text = "Not Connected"
         infoLabel.text = "You are not connected to a WiFi Network."
         BSSIDLabel.text = ""
+        #if targetEnvironment(simulator)
+        let bssid = "SIMULATOR"
+        currentBSSID = bssid
+        if let name = names.getName(bssid: bssid) {
+            label.text = name
+            BSSIDLabel.text = bssid
+            addNameButton.isHidden = true
+        } else {
+            label.text = bssid
+            BSSIDLabel.text = ""
+            addNameButton.isHidden = false
+        }
+        infoLabel.text = "SSID: Simulator WiFi\nIP Address: 0.0.0.0"
+        #endif
     }
+    
+    @IBAction func addName(_ sender: Any) {
+        let alert = UIAlertController(title: "Enter a name for this access point:", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = ""
+        })
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+
+            if let name = alert.textFields?.first?.text {
+                if name == "" { return }
+                var data = AccessPointList.load() ?? AccessPointList.empty()
+                data.addItem(AccessPoint(name: name, BSSID: self.currentBSSID))
+                data.save()
+                self.reloadUI()
+            }
+        }))
+
+        self.present(alert, animated: true)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
