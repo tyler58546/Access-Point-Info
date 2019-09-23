@@ -16,7 +16,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath == IndexPath(row: 0, section: 1) {
+        if indexPath == IndexPath(row: 0, section: 2) {
             //Reset all settings
             let domain = Bundle.main.bundleIdentifier!
             UserDefaults.standard.removePersistentDomain(forName: domain)
