@@ -16,6 +16,14 @@ class AccessPointDetailTableViewController: UITableViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var BSSIDField: UITextField!
     
+    @IBAction func enter(_ sender: Any) {
+        if let s = sender as? UITextField {
+            s.endEditing(false)
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
