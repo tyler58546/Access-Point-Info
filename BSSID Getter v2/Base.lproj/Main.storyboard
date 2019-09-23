@@ -59,9 +59,8 @@ IP Address: N/A</string>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="v1.0.0 beta 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUT-4T-6U1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.0 beta 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUT-4T-6U1">
                                 <rect key="frame" x="16" y="650" width="343" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -77,9 +76,12 @@ IP Address: N/A</string>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0TJ-Gy-odN" secondAttribute="trailing" constant="16" id="P4Z-Vf-GR6"/>
                             <constraint firstItem="K2v-et-UeN" firstAttribute="top" secondItem="LFf-gb-k4o" secondAttribute="bottom" constant="8" id="T6t-zv-isz"/>
                             <constraint firstItem="0TJ-Gy-odN" firstAttribute="top" secondItem="dog-OQ-2rs" secondAttribute="bottom" constant="8" id="Vk4-Fq-Bh8"/>
+                            <constraint firstItem="QUT-4T-6U1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ahJ-bi-9pX"/>
                             <constraint firstItem="0TJ-Gy-odN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="crM-Tv-iKZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QUT-4T-6U1" secondAttribute="trailing" constant="16" id="rrD-D1-gYK"/>
                             <constraint firstItem="K2v-et-UeN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="um5-3X-KNI"/>
                             <constraint firstItem="LFf-gb-k4o" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vRu-m0-pmP"/>
+                            <constraint firstItem="QUT-4T-6U1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vVB-Wt-iid"/>
                             <constraint firstItem="LFf-gb-k4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vxK-iB-Hkl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K2v-et-UeN" secondAttribute="trailing" constant="16" id="wXh-vY-bX5"/>
                             <constraint firstItem="AaH-i2-WtU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xtL-Qr-1Ig"/>
