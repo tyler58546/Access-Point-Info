@@ -22,6 +22,13 @@ class AccessPointDetailTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath == IndexPath(row: 1, section: 1) {
+            BSSIDField.text = NetworkInfo.current()?.BSSID ?? ""
+            BSSIDField.endEditing(false)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
     
     
     override func viewDidLoad() {
