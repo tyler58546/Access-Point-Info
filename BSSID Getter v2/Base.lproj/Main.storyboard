@@ -204,7 +204,7 @@ IP Address: N/A</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     <connections>
-                                                        <action selector="enter:" destination="D8V-iC-BGL" eventType="editingDidEnd" id="OCJ-6B-rph"/>
+                                                        <action selector="enter:" destination="D8V-iC-BGL" eventType="primaryActionTriggered" id="IBc-qj-tV2"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
