@@ -113,6 +113,8 @@ class AccessPointList {
         for (_, accessPoint) in data {
             if accessPoint.BSSID == bssid {
                 return accessPoint.name
+            } else {
+                print("")
             }
         }
         return nil

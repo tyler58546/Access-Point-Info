@@ -64,6 +64,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @objc func reloadUI() {
         print("Reloading UI...")
+        names = AccessPointList.load() ?? AccessPointList.empty()
         if let interfaces = CNCopySupportedInterfaces() as NSArray? {
             for interface in interfaces {
                 if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
