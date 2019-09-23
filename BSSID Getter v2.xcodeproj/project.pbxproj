@@ -17,6 +17,8 @@
 		2F3BFE3423368A600077AA79 /* BSSIDIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2F3BFE2D23368A600077AA79 /* BSSIDIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2F3BFE3A23368AB60077AA79 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE27233688970077AA79 /* Intents.intentdefinition */; };
 		2F3BFE3C23368B640077AA79 /* BSSIDIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE3B23368B640077AA79 /* BSSIDIntentHandler.swift */; };
+		2FAF407723393AA1004B4396 /* LocatonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF407623393AA1004B4396 /* LocatonViewController.swift */; };
+		2FAF407923393ABE004B4396 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF407823393ABE004B4396 /* SettingsTableViewController.swift */; };
 		2FE580AB2336D94E005307CC /* AccessPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE580AA2336D94E005307CC /* AccessPoint.swift */; };
 		2FE580AD2336D9DE005307CC /* AccessPointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE580AC2336D9DE005307CC /* AccessPointsTableViewController.swift */; };
 		2FE580AF2336D9FE005307CC /* AccessPointDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE580AE2336D9FE005307CC /* AccessPointDetailTableViewController.swift */; };
@@ -48,7 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2F3BFE112335D5340077AA79 /* BSSID Getter v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BSSID Getter v2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3BFE112335D5340077AA79 /* Access Point Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Access Point Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3BFE142335D5340077AA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F3BFE162335D5340077AA79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2F3BFE192335D5340077AA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,8 @@
 		2F3BFE3123368A600077AA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F3BFE3923368A810077AA79 /* BSSIDIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BSSIDIntents.entitlements; sourceTree = "<group>"; };
 		2F3BFE3B23368B640077AA79 /* BSSIDIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSSIDIntentHandler.swift; sourceTree = "<group>"; };
+		2FAF407623393AA1004B4396 /* LocatonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatonViewController.swift; sourceTree = "<group>"; };
+		2FAF407823393ABE004B4396 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		2FE580AA2336D94E005307CC /* AccessPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPoint.swift; sourceTree = "<group>"; };
 		2FE580AC2336D9DE005307CC /* AccessPointsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPointsTableViewController.swift; sourceTree = "<group>"; };
 		2FE580AE2336D9FE005307CC /* AccessPointDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPointDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +102,7 @@
 		2F3BFE122335D5340077AA79 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2F3BFE112335D5340077AA79 /* BSSID Getter v2.app */,
+				2F3BFE112335D5340077AA79 /* Access Point Info.app */,
 				2F3BFE2D23368A600077AA79 /* BSSIDIntents.appex */,
 			);
 			name = Products;
@@ -112,6 +116,8 @@
 				2FE580A82336D8E3005307CC /* Main Screen */,
 				2F3BFE182335D5340077AA79 /* Main.storyboard */,
 				2F3BFE27233688970077AA79 /* Intents.intentdefinition */,
+				2FAF407623393AA1004B4396 /* LocatonViewController.swift */,
+				2FAF407823393ABE004B4396 /* SettingsTableViewController.swift */,
 				2FE580A92336D907005307CC /* Edit Access Points */,
 				2F3BFE1B2335D5360077AA79 /* Assets.xcassets */,
 				2F3BFE1D2335D5360077AA79 /* LaunchScreen.storyboard */,
@@ -169,7 +175,7 @@
 			);
 			name = "BSSID Getter v2";
 			productName = "BSSID Getter v2";
-			productReference = 2F3BFE112335D5340077AA79 /* BSSID Getter v2.app */;
+			productReference = 2F3BFE112335D5340077AA79 /* Access Point Info.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2F3BFE2C23368A600077AA79 /* BSSIDIntents */ = {
@@ -266,8 +272,10 @@
 				2F3BFE28233688970077AA79 /* Intents.intentdefinition in Sources */,
 				2F3BFE172335D5340077AA79 /* ViewController.swift in Sources */,
 				2F3BFE152335D5340077AA79 /* AppDelegate.swift in Sources */,
+				2FAF407723393AA1004B4396 /* LocatonViewController.swift in Sources */,
 				2FE580AF2336D9FE005307CC /* AccessPointDetailTableViewController.swift in Sources */,
 				2FE580B12336DA7B005307CC /* AccessPointTableViewCell.swift in Sources */,
+				2FAF407923393ABE004B4396 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +452,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tyler58546.BSSID-Getter-v2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Access Point Info";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -467,7 +475,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tyler58546.BSSID-Getter-v2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Access Point Info";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -45,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var BSSIDLabel: UILabel!
     @IBOutlet weak var addNameButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
    
     
@@ -118,7 +119,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
             if let name = alert.textFields?.first?.text {
                 if name == "" { return }
-                var data = AccessPointList.load() ?? AccessPointList.empty()
+                let data = AccessPointList.load() ?? AccessPointList.empty()
                 data.addItem(AccessPoint(name: name, BSSID: self.currentBSSID))
                 data.save()
                 self.reloadUI()
@@ -128,18 +129,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.present(alert, animated: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print(NSHomeDirectory())
-        
-        
-        
-        
         reloadUI()
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(reloadUI), userInfo: nil, repeats: true)
         
+        if #available(iOS 13.0, *) {
+            //Use system settings icon
+        } else {
+            //Use custom settings icon
+            settingsButton.setImage(UIImage(imageLiteralResourceName: "Settings"), for: .normal)
+        }
         
         
         //Donate intent thing
@@ -149,13 +155,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.requestWhenInUseAuthorization()
+        timer.invalidate()
         
+        
+        
+        
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(reloadUI), userInfo: nil, repeats: true)
         reloadUI()
+        
+        
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        if #available(iOS 13.0, *) {
+            if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "LocationViewController") as! LocatonViewController
+                newViewController.isModalInPresentation = true
+                newViewController.modalPresentationStyle = .fullScreen
+                self.present(newViewController, animated: false, completion: nil)
+            }
+        }
+    }
 
 }
 
