@@ -16,30 +16,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     var timer = Timer()
     
-    // Return IP address of WiFi interface (en0) as a String, or `nil`
-    func getWiFiAddress() -> String? {
-        var address: String?
-        var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
-        if getifaddrs(&ifaddr) == 0 {
-            var ptr = ifaddr
-            while ptr != nil {
-                defer { ptr = ptr?.pointee.ifa_next }
-                
-                let interface = ptr?.pointee
-                let addrFamily = interface?.ifa_addr.pointee.sa_family
-                if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
-                    
-                    if let name: String = String(cString: (interface?.ifa_name)!), name == "en0" {
-                        var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                        getnameinfo(interface?.ifa_addr, socklen_t((interface?.ifa_addr.pointee.sa_len)!), &hostname, socklen_t(hostname.count), nil, socklen_t(0), NI_NUMERICHOST)
-                        address = String(cString: hostname)
-                    }
-                }
-            }
-            freeifaddrs(ifaddr)
-        }
-        return address
-    }
+    
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
@@ -49,18 +26,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
    
     
-    func getWiFiSsid() -> String? {
-        if let interfaces = CNCopySupportedInterfaces() as NSArray? {
-            for interface in interfaces {
-                if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
-                    // Changed line below from the "ssid =" to return the value directly.
-                    return interfaceInfo[kCNNetworkInfoKeyBSSID as String] as? String
-                }
-            }
-        }
-        // Changed this to return nil
-        return nil
-    }
+    
     
     var names = AccessPointList.empty()
     var currentBSSID = ""
@@ -68,43 +34,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @objc func reloadUI() {
         print("Reloading UI...")
         names = AccessPointList.load() ?? AccessPointList.empty()
-        if let interfaces = CNCopySupportedInterfaces() as NSArray? {
-            for interface in interfaces {
-                if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
-                    let bssid = interfaceInfo[kCNNetworkInfoKeyBSSID as String] as! String
-                    currentBSSID = bssid
-                    
-                    if let name = names.getName(bssid: bssid) {
-                        label.text = name
-                        BSSIDLabel.text = bssid
-                        addNameButton.isHidden = true
-                    } else {
-                        label.text = bssid
-                        BSSIDLabel.text = ""
-                        addNameButton.isHidden = false
-                    }
-                    infoLabel.text = "SSID: \(interfaceInfo[kCNNetworkInfoKeySSID as String] as! String)\nIP Address: \(getWiFiAddress() ?? "N/A")"
-                    return
-                }
+        var current = NetworkInfo.current()
+        #if targetEnvironment(simulator)
+        current = NetworkInfo.simulated()
+        #endif
+        
+        if let netInfo = current {
+            let bssid = netInfo.BSSID
+            currentBSSID = bssid
+            
+            if let name = names.getName(bssid: bssid) {
+                label.text = name
+                BSSIDLabel.text = bssid
+                addNameButton.isHidden = true
+            } else {
+                label.text = bssid
+                BSSIDLabel.text = ""
+                addNameButton.isHidden = false
             }
+            infoLabel.text = "SSID: \(netInfo.SSID)\nIP Address: \(netInfo.ipAddress)"
+            return
         }
+        
+                
+            
+        
         label.text = "Not Connected"
         infoLabel.text = "You are not connected to a WiFi Network."
         BSSIDLabel.text = ""
-        #if targetEnvironment(simulator)
-        let bssid = "SIMULATOR"
-        currentBSSID = bssid
-        if let name = names.getName(bssid: bssid) {
-            label.text = name
-            BSSIDLabel.text = bssid
-            addNameButton.isHidden = true
-        } else {
-            label.text = bssid
-            BSSIDLabel.text = ""
-            addNameButton.isHidden = false
-        }
-        infoLabel.text = "SSID: Simulator WiFi\nIP Address: 0.0.0.0"
-        #endif
     }
     
     @IBAction func addName(_ sender: Any) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0A2E222339855100976005 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A2E212339855100976005 /* NetworkInfo.swift */; };
 		2F3BFE152335D5340077AA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE142335D5340077AA79 /* AppDelegate.swift */; };
 		2F3BFE172335D5340077AA79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3BFE162335D5340077AA79 /* ViewController.swift */; };
 		2F3BFE1A2335D5340077AA79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3BFE182335D5340077AA79 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F0A2E212339855100976005 /* NetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
 		2F3BFE112335D5340077AA79 /* Access Point Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Access Point Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3BFE142335D5340077AA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F3BFE162335D5340077AA79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				2F3BFE142335D5340077AA79 /* AppDelegate.swift */,
 				2FE580A82336D8E3005307CC /* Main Screen */,
 				2F3BFE182335D5340077AA79 /* Main.storyboard */,
+				2F0A2E212339855100976005 /* NetworkInfo.swift */,
 				2F3BFE27233688970077AA79 /* Intents.intentdefinition */,
 				2FAF407623393AA1004B4396 /* LocatonViewController.swift */,
 				2FAF407823393ABE004B4396 /* SettingsTableViewController.swift */,
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F0A2E222339855100976005 /* NetworkInfo.swift in Sources */,
 				2FE580AB2336D94E005307CC /* AccessPoint.swift in Sources */,
 				2FE580AD2336D9DE005307CC /* AccessPointsTableViewController.swift in Sources */,
 				2F3BFE28233688970077AA79 /* Intents.intentdefinition in Sources */,
