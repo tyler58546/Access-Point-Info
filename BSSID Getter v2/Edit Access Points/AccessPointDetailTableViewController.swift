@@ -16,6 +16,7 @@ class AccessPointDetailTableViewController: UITableViewController, UIImagePicker
     var selectedAccessPoint:AccessPoint?
     var selectedAccessPointID:Int?
     var newImage:UIImage? = nil
+    var prevView:AccessPointsTableViewController?
     
     let imagePicker = UIImagePickerController()
     
@@ -45,12 +46,23 @@ class AccessPointDetailTableViewController: UITableViewController, UIImagePicker
                         DispatchQueue.main.async {
                             self.pickPhoto()
                         }
+                        return
                         
                     } else {}
                 })
             }
             if photos == .authorized {
                 pickPhoto()
+            } else {
+                let alert = UIAlertController(title: "Photos Access Required", message: "This app needs access to your photos to allow you to pick a background image.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { action in
+                    //Open settings
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
             }
             
             
@@ -93,32 +105,19 @@ class AccessPointDetailTableViewController: UITableViewController, UIImagePicker
         
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "saveAccessPoint" {
-            if let dest = segue.destination as? AccessPointsTableViewController {
-                dest.data.updateAccessPoint(id: selectedAccessPointID!, name: nameField.text ?? "", bssid: BSSIDField.text ?? "")
-                if newImage != nil {
-                    dest.data.updateImage(id: selectedAccessPointID!, image: newImage!)
-                    
-                    
-                    
-                }
-                dest.data.save()
-                dest.tableView.reloadData()
+    override func viewWillDisappear(_ animated: Bool) {
+        if let dest = prevView {
+            dest.data.updateAccessPoint(id: selectedAccessPointID!, name: nameField.text ?? "", bssid: BSSIDField.text ?? "")
+            if newImage != nil {
+                dest.data.updateImage(id: selectedAccessPointID!, image: newImage!)
+                
+                
+                
             }
-        }
-        if segue.identifier == "deleteAccessPoint" {
-            if let dest = segue.destination as? AccessPointsTableViewController {
-                dest.data.removeItem(id: selectedAccessPointID!)
-                dest.data.save()
-                dest.tableView.reloadData()
-            }
+            dest.data.save()
+            dest.tableView.reloadData()
         }
     }
-
-    
-
 }
 
 

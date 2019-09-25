@@ -53,6 +53,7 @@ class AccessPointsTableViewController: UITableViewController {
             if let dest = segue.destination as? AccessPointDetailTableViewController {
                 dest.selectedAccessPoint = (sender as! AccessPointTableViewCell).accessPoint!
                 dest.selectedAccessPointID = (sender as! AccessPointTableViewCell).id
+                dest.prevView = self
             }
         }
     }
@@ -70,7 +71,7 @@ class AccessPointsTableViewController: UITableViewController {
         data.save()
         tableView.reloadData()
         let ip = IndexPath(row: data.getID(fromName: "Unnamed \(n)")!, section: 0)
-        //tableView.selectRow(at: ip, animated: true, scrollPosition: .bottom)
+        tableView.selectRow(at: ip, animated: true, scrollPosition: .bottom)
     }
     
     
@@ -115,17 +116,20 @@ class AccessPointsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            data.removeItem(id: indexPath.row)
+            data.save()
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
+            
+        } /*else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }    */
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
