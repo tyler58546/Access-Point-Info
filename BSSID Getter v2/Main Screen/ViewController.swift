@@ -23,6 +23,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var BSSIDLabel: UILabel!
     @IBOutlet weak var addNameButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var VFXView1: UIVisualEffectView!
+    @IBOutlet weak var VFXView2: UIVisualEffectView!
     
    
     
@@ -52,13 +55,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 BSSIDLabel.text = ""
                 addNameButton.isHidden = false
             }
+            background.image = names.getImage(bssid: bssid)
             infoLabel.text = "SSID: \(netInfo.SSID)\nIP Address: \(netInfo.ipAddress)"
+            if #available(iOS 13.0, *) {
+                VFXView1.effect = UIBlurEffect(style: .systemThinMaterial)
+                VFXView2.effect = UIBlurEffect(style: .systemThinMaterial)
+            } else {
+                // Fallback on earlier versions
+                VFXView1.effect = UIBlurEffect(style: .extraLight)
+                VFXView2.effect = UIBlurEffect(style: .extraLight)
+            }
+            
+            if background.image == nil {
+                VFXView1.effect = nil
+                VFXView2.effect = nil
+            }
             return
         }
-        
-                
-            
-        
+        VFXView1.effect = nil
+        VFXView2.effect = nil
+        background.image = nil
         label.text = "Not Connected"
         infoLabel.text = "You are not connected to a WiFi Network."
         BSSIDLabel.text = ""
@@ -109,6 +125,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let intent = GetBSSIDIntent()
         let interaction = INInteraction(intent: intent, response: nil)
         interaction.donate(completion: nil)
+        
+        VFXView1.clipsToBounds = true
+        VFXView1.layer.cornerRadius = 10
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

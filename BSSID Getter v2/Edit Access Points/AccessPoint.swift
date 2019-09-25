@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AccessPoint: NSObject, Codable, NSSecureCoding {
     static var supportsSecureCoding: Bool = true
@@ -14,19 +15,27 @@ class AccessPoint: NSObject, Codable, NSSecureCoding {
     func encode(with coder: NSCoder) {
         coder.encode(name, forKey: "name")
         coder.encode(BSSID, forKey: "BSSID")
+        coder.encode(backgroundImageLocation, forKey: "backgroundImageLocation")
     }
     
     required init?(coder: NSCoder) {
         self.name = coder.decodeObject(forKey: "name") as! String
         self.BSSID = coder.decodeObject(forKey: "BSSID") as! String
+        self.backgroundImageLocation = (coder.decodeObject(forKey: "backgroundImageLocation") as? String)
     }
     
     let name:String
     let BSSID:String
+    var backgroundImageLocation:String?
     
-    init(name:String,BSSID:String) {
+    init(name:String,BSSID:String, backgroundImage:UIImage? = nil, backgroundImageLocation:String? = nil) {
         self.name = name
         self.BSSID = BSSID
+        self.backgroundImageLocation = backgroundImageLocation
+        super.init()
+        if backgroundImage != nil {
+            self.setImage(backgroundImage!)
+        }
     }
     
     static func fromDict(_ dict:KeyValuePairs<String, String>) -> [AccessPoint] {
@@ -36,6 +45,40 @@ class AccessPoint: NSObject, Codable, NSSecureCoding {
         }
         print("----")
         return accessPoints
+    }
+    
+    func getImage() -> UIImage? {
+        if self.backgroundImageLocation == nil {
+            return nil
+            
+        }
+        do {
+            
+            let fileManager = FileManager.default
+            let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+            let fileURL = documentDirectory.appendingPathComponent("\(self.backgroundImageLocation!)")
+            let imageData = try Data(contentsOf: fileURL)
+            return UIImage(data: imageData)
+            
+        } catch {
+            print("Error loading image: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    func setImage(_ image:UIImage) {
+        //Save image
+        let fileManager = FileManager.default
+        do {
+            let documentDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor:nil, create:false)
+            let fileURL = documentDirectory.appendingPathComponent("\(self.BSSID.replacingOccurrences(of: ":", with: "-")).jpeg")
+            if let imageData = image.jpegData(compressionQuality: 1.0) {
+                try imageData.write(to: fileURL)
+                self.backgroundImageLocation = ("\(self.BSSID.replacingOccurrences(of: ":", with: "-")).jpeg")
+                print("Saved image at: \(fileURL)")
+            }
+        } catch {
+            print(error)
+        }
     }
 }
 class AccessPointList: NSObject, Codable, NSSecureCoding {
@@ -81,8 +124,18 @@ class AccessPointList: NSObject, Codable, NSSecureCoding {
         data.remove(at: id)
     }
     
-    func updateAccessPoint(id: Int, name: String, bssid:String) {
-        data[id] = AccessPoint(name: name, BSSID: bssid)
+    func updateAccessPoint(id: Int, name: String, bssid:String, backgroundImage:UIImage? = nil) {
+        
+        if backgroundImage == nil {
+            let bg = data[id].backgroundImageLocation
+            data[id] = AccessPoint(name: name, BSSID: bssid, backgroundImageLocation: bg)
+            return
+        }
+        data[id] = AccessPoint(name: name, BSSID: bssid, backgroundImage: backgroundImage)
+    }
+    
+    func updateImage(id: Int, image:UIImage) {
+        data[id].setImage(image)
     }
     
     func count() -> Int {
@@ -129,6 +182,15 @@ class AccessPointList: NSObject, Codable, NSSecureCoding {
         }
         return nil
     }
+    func getImage(bssid: String) -> UIImage? {
+        for accessPoint in data {
+            if accessPoint.BSSID == bssid {
+                return accessPoint.getImage()
+            }
+        }
+        return nil
+    }
+    
     func getID(fromName name:String) -> Int? {
         var n = 0
         for accessPoint in data {
